@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "private": true,
+  "name": "hello-tab",
+  "dependencies": {
+    "coffee-script": "^1.10.0",
+    "nodemon": "1.7.0"
+  },
+  "scripts": {
+    "start": "(coffee --compile --output dist --watch src &) && nodemon ./dist/server.js"
+  }
+}
