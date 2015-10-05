@@ -15,7 +15,7 @@ class Main extends React.Component {
   render() {
     return (
       <div className="hellp-app">
-        Hello {this.props.name}!
+        <a>Hello {this.props.name}!</a>
       </div>
     )
   }

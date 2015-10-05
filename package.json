@@ -4,9 +4,11 @@
   "name": "hello-tab",
   "dependencies": {
     "babel": "5.8.23",
+    "connect-assets": "^5.0.1",
     "express": "4.13.3",
     "jade": "1.11.0",
     "node-jsx": "0.13.3",
+    "node-sass-middleware": "^0.9.6",
     "nodemon": "1.7.0",
     "react": "0.13.3",
     "react-router-component": "^0.26.1"

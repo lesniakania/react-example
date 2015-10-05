@@ -2,10 +2,23 @@
 
 Example front in React
 
-## Run
+## Install
 
 ```
 npm install
+```
+
+## Run
+
+### Development
+
+```
 npm start
+```
+
+### Production
+
+```
+NODE_ENV=production npm start
 ```
 
