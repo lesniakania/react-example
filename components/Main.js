@@ -1,21 +1,11 @@
 import React from 'react';
+import HelloMessage from './HelloMessage'
 
 class Main extends React.Component {
-  componentWillReceiveProps(newProps, oldProps) {
-    console.log("componentWillReceiveProps");
-    // this.setState(this.getInitialState(newProps));
-  }
-
-  // Called directly after component rendering, only on client
-  componentDidMount() {
-    console.log("componentDidMount");
-  }
-
-  // Render the component
   render() {
     return (
-      <div className="hellp-app">
-        <a>Hello {this.props.name}!</a>
+      <div className="hello-app">
+        <HelloMessage />
       </div>
     )
   }
