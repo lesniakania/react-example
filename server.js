@@ -2,8 +2,7 @@ import React from 'react';
 import Express from 'express';
 import Jsx from 'node-jsx';
 import http from 'http';
-import Routes from './routes';
-import ConnectAssets from 'connect-assets';
+import Routes from './assets/js/routes';
 import Webpack from 'webpack';
 import WebpackMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
@@ -16,8 +15,6 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 
 app.engine('jade', require('jade').__express)
 app.set('view engine', 'jade')
-
-app.use(ConnectAssets({ helperContext: app.locals }));
 
 app.use(Express.static(path.join(__dirname, 'public')))
 
