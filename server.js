@@ -22,14 +22,7 @@ if (isDevelopment) {
   const compiler = Webpack(Config);
   app.use(WebpackMiddleware(compiler, {
     publicPath: Config.output.publicPath,
-    stats: {
-      colors: true,
-      hash: false,
-      timings: true,
-      chunks: false,
-      chunkModules: false,
-      modules: false
-    }
+    noInfo: true
   }));
   app.use(WebpackHotMiddleware(compiler));
 }

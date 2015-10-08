@@ -1,11 +1,13 @@
 var path = require('path');
+var Webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: "source-map",
   entry: [
+    'webpack-hot-middleware/client?reload=true',
     path.join(__dirname, 'assets', 'js', 'application.js'),
-    path.join(__dirname, 'assets', 'css', 'application.scss'),
+    path.join(__dirname, 'assets', 'css', 'application.scss')
   ],
   output: {
     path: path.join(__dirname, 'public'),
@@ -17,7 +19,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loaders: ["react-hot", "babel-loader"]
       },
       {
         test: /\.css$/,
@@ -29,6 +31,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new Webpack.optimize.OccurenceOrderPlugin(),
+    new Webpack.HotModuleReplacementPlugin(),
+    new Webpack.NoErrorsPlugin(),
     new ExtractTextPlugin("bundle.css")
   ]
 };
