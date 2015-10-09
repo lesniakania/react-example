@@ -12,11 +12,17 @@ import path from 'path';
 let app = Express();
 let port = process.env.PORT || 3000;
 const isDevelopment = process.env.NODE_ENV !== 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
-app.engine('jade', require('jade').__express)
-app.set('view engine', 'jade')
+app.engine('ejs', require('ejs').__express)
+app.set('view engine', 'ejs')
 
 app.use(Express.static(path.join(__dirname, 'public')))
+
+if (isProduction) {
+  app.set('views', path.join(__dirname, 'dist'));
+  app.use(Express.static(path.join(__dirname, 'dist')))
+}
 
 if (isDevelopment) {
   const compiler = Webpack(Config);
@@ -29,6 +35,7 @@ if (isDevelopment) {
 
 app.get('/', (req, res) => {
     res.render('index', {
+      isDevelopment: isDevelopment,
       app: React.renderToString(Routes)
     })
   }
