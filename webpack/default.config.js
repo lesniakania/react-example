@@ -5,8 +5,8 @@ module.exports = {
   BundleName: 'bundle',
   Dist: path.join(__dirname, '..', 'dist'),
   Entries: [
-    path.join(__dirname, '..', 'assets', 'js', 'application.js'),
-    path.join(__dirname, '..', 'assets', 'css', 'application.scss')
+    path.join(__dirname, '..', 'src', 'application.js'),
+    path.join(__dirname, '..', 'css', 'application.scss')
   ],
   Loaders: [
     {

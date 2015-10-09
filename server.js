@@ -2,7 +2,7 @@ import React from 'react';
 import Express from 'express';
 import Jsx from 'node-jsx';
 import http from 'http';
-import Routes from './assets/js/routes';
+import Routes from './src/routes';
 import Webpack from 'webpack';
 import WebpackMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
