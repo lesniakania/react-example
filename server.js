@@ -31,7 +31,7 @@ if (isDevelopment) {
   app.use(WebpackHotMiddleware(compiler));
 }
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
     res.render('index', {
       isDevelopment: isDevelopment,
       app: React.renderToString(Routes)
