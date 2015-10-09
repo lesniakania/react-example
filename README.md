@@ -19,6 +19,7 @@ npm start
 ### Production
 
 ```
-NODE_ENV=production npm start
+npm run build
+npm run production
 ```
 

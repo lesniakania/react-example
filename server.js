@@ -6,7 +6,7 @@ import Routes from './assets/js/routes';
 import Webpack from 'webpack';
 import WebpackMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
-import Config from './webpack.config.js';
+import DevConfig from './webpack/development.config.js';
 import path from 'path';
 
 let app = Express();
@@ -17,17 +17,15 @@ const isProduction = process.env.NODE_ENV === 'production';
 app.engine('ejs', require('ejs').__express)
 app.set('view engine', 'ejs')
 
-app.use(Express.static(path.join(__dirname, 'public')))
-
 if (isProduction) {
   app.set('views', path.join(__dirname, 'dist'));
   app.use(Express.static(path.join(__dirname, 'dist')))
 }
 
 if (isDevelopment) {
-  const compiler = Webpack(Config);
+  const compiler = Webpack(DevConfig);
   app.use(WebpackMiddleware(compiler, {
-    publicPath: Config.output.publicPath,
+    publicPath: DevConfig.output.publicPath,
     noInfo: true
   }));
   app.use(WebpackHotMiddleware(compiler));
