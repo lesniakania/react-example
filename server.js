@@ -1,8 +1,10 @@
 import React from 'react';
+import { match, RoutingContext } from 'react-router'
+import ReactDOMServer from 'react-dom/server';
 import Express from 'express';
 import Jsx from 'node-jsx';
 import http from 'http';
-import Routes from './src/routes';
+import routes from './src/routes';
 import Webpack from 'webpack';
 import WebpackMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
@@ -31,13 +33,22 @@ if (isDevelopment) {
   app.use(WebpackHotMiddleware(compiler));
 }
 
-app.get('/*', (req, res) => {
-    res.render('index', {
-      isDevelopment: isDevelopment,
-      app: React.renderToString(Routes)
-    })
-  }
-)
+app.use((req, res) => {
+  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    if (error) {
+      res.status(500).send(error.message)
+    } else if (redirectLocation) {
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+    } else if (renderProps) {
+      res.render('index', {
+        isDevelopment: isDevelopment,
+        app: ReactDOMServer.renderToString(<RoutingContext {...renderProps} />)
+      });
+    } else {
+      res.status(404).send('Not found')
+    }
+  })
+});
 
 http.createServer(app).listen(port, function() {
   console.log('Express server listening on port ' + port);

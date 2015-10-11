@@ -7,9 +7,10 @@
     "babel-core": "^5.8.25",
     "ejs": "^2.3.4",
     "express": "4.13.3",
-    "react": "0.13.3",
-    "react-async": "^2.1.0",
-    "react-router-component": "^0.26.1"
+    "history": "^1.12.3",
+    "react": "0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.0-rc2"
   },
   "scripts": {
     "babel-node": "babel-node --stage 0",
