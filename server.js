@@ -3,7 +3,7 @@ import { match, RoutingContext } from 'react-router';
 import ReactDOMServer from 'react-dom/server';
 import Express from 'express';
 import http from 'http';
-import routes from './src/routes';
+import Routes from './src/routes';
 import Webpack from 'webpack';
 import WebpackMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
@@ -34,7 +34,7 @@ if (isDevelopment) {
 }
 
 app.use((req, res) => {
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  match({ routes: Routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).send(error.message);
     } else if (redirectLocation) {
